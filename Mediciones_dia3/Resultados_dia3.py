@@ -70,7 +70,11 @@ for concentracion in concentraciones:
         print(modo)
         ruta_final = ruta_conc / f'{modo}'
         print(ruta_final)
-        lamb_i, err_lamb_i, I_i, err_I_i = obtener_espectros(ruta_final)
+        try:
+            lamb_i, err_lamb_i, I_i, err_I_i = obtener_espectros(ruta_final)
+        except:
+            lamb_i, err_lamb_i, I_i, err_I_i = obtener_espectros(ruta_final, sep = ';', sep_str = ',')
+            
 
         if modo == 'Emi':
             datos_emision.append(
